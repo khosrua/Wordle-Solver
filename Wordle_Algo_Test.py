@@ -70,7 +70,8 @@ load_working_lookup()
 #print(word_list.columns)
 #print(df.columns)
 
-output = word_list#.rename(columns={0:'word'})
+output = word_list
 tqdm.pandas(desc="Solver running")
 output['GuessCount'] = output.progress_apply(lambda x: solver(x[0]), axis=1)
+output.to_csv('Wordle-Algo-Test-Result.csv')
 print(output)
