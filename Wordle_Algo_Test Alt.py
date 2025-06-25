@@ -40,7 +40,10 @@ def filter_input():
 
 def guess():
     group_lookup()
-    return groupdf.index[0]
+    if groupdf.iloc[0,0] == 1:
+        return target_list.iloc[0]
+    else:
+        return groupdf.index[0]
 
 def solver(target):
     load_working_lookup()
@@ -55,23 +58,34 @@ def solver(target):
             break
         cand_target(input,rspn)
         filter_target()
-        filter_input()
+        #filter_input()
 
 #Main
 
 load_word_list()
 load_lookup()
 load_working_lookup()
-#row = random.randrange(1,2314)
+'''
+row = random.randrange(1,2314)
 #row = int(input('Row: '))
 #target = word_list.iloc[row,0]
-#print(target)
-#solver(target)
-#print(word_list.columns)
-#print(df.columns)
+target = input('Target word: ')
+print(target)
 
+group_lookup()
+print(groupdf)
+print(groupdf.iloc[0,0])
+cand_target('trace','gggbb')
+print(target_list)
+print(target_list.iloc[0])
+
+solver(target)
+print(word_list.columns)
+print(df.columns)
+
+'''
 output = word_list
 tqdm.pandas(desc="Solver running")
 output['GuessCount'] = output.progress_apply(lambda x: solver(x[0]), axis=1)
-output.to_csv('Wordle-Algo-Test-Result.csv')
+output.to_csv('Wordle-Algo-Test--Alt-Result.csv')
 print(output)
