@@ -72,7 +72,7 @@ def filter_input():
     global wrkdf
     wrkdf = wrkdf[(wrkdf['input'].isin(target_list))]
 
-#Main Entrance
+#Main
 print('Wordle Solver')
 print('1. Recalculate the lookup table. Use if the word list has been updated')
 print('2. Load lookup table from file')

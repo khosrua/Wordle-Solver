@@ -57,7 +57,7 @@ def solver(target):
         filter_target()
         filter_input()
 
-#Main Entrance
+#Main
 
 load_word_list()
 load_lookup()
